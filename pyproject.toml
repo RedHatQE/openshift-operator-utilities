@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "openshift-operator-utilities"
+version = "0.0.0"
+description = "Utilities to interact with openshift operators"
+authors = ["dbasunag <dbasunag@redhat.com>"]
+license = "Apache License"
+readme = "README.md"
+packages = [{include = "utilities"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+openshift-python-wrapper = "^4.15.11"
+kubernetes = "^28.1.0"
+
+[tool.poetry-dynamic-versioning.substitution]
+files = ["VERSION"]
+
+[tool.poetry-dynamic-versioning]
+enable = true
+pattern = "((?P<epoch>\\d+)!)?(?P<base>\\d+(\\.\\d+)*)"
+
+[build-system]
+requires = ["poetry-core>=1.0.0", "poetry-dynamic-versioning"]
+build-backend = "poetry_dynamic_versioning.backend"
