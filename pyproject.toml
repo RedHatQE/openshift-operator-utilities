@@ -10,7 +10,7 @@ packages = [{include = "utilities"}]
 [tool.poetry.dependencies]
 python = "^3.8"
 openshift-python-wrapper = "^4.15.11"
-kubernetes = "^28.1.0"
+kubernetes = "^29.0.0"
 
 [tool.poetry-dynamic-versioning.substitution]
 files = ["VERSION"]
