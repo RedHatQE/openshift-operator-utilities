@@ -9,8 +9,9 @@ packages = [{include = "utilities"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-openshift-python-wrapper = "^4.15.11"
-kubernetes = "^28.1.0"
+openshift-python-wrapper = {git = "https://github.com/RedHatQE/openshift-python-wrapper.git"}
+kubernetes = "^29.0.0"
+openshift-python-utilities = "^5.0.16"
 
 [tool.poetry-dynamic-versioning.substitution]
 files = ["VERSION"]
