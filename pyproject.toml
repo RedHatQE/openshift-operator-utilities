@@ -9,7 +9,7 @@ packages = [{ include = "utilities" }]
 
 [tool.poetry.dependencies]
 python = "^3.8"
-openshift-python-wrapper = {git = "https://github.com/RedHatQE/openshift-python-wrapper.git"}
+openshift-python-wrapper = {git = "https://github.com/RedHatQE/openshift-python-wrapper.git", branch = "main"}
 kubernetes = "^29.0.0"
 openshift-python-utilities = "^5.0.16"
 

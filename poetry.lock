@@ -367,7 +367,7 @@ xmltodict = "^0.13.0"
 [package.source]
 type = "git"
 url = "https://github.com/RedHatQE/openshift-python-wrapper.git"
-reference = "HEAD"
+reference = "main"
 resolved_reference = "6f800f87908ace17d79c3f53d9233bfcf2c90eac"
 
 [[package]]
@@ -758,4 +758,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "f3e11df4149b9973504e05bc6a4e509363ad60529be474fc74a3106f211a623f"
+content-hash = "d6ff0a007a52ad8a255a44ae4f0003510a914b4b549a1142fe3ee95fd5603858"
