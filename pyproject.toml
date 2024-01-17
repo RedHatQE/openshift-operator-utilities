@@ -5,12 +5,12 @@ description = "Utilities to interact with openshift operators"
 authors = ["dbasunag <dbasunag@redhat.com>"]
 license = "Apache License"
 readme = "README.md"
-packages = [{include = "utilities"}]
+packages = [{ include = "utilities" }]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 openshift-python-wrapper = "^4.15.11"
-kubernetes = "^29.0.0"
+kubernetes = "^28.0.0"
 openshift-python-utilities = "^5.0.16"
 
 [tool.poetry-dynamic-versioning.substitution]
