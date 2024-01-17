@@ -347,28 +347,22 @@ timeout-sampler = ">=0.0.1,<0.0.2"
 
 [[package]]
 name = "openshift-python-wrapper"
-version = "4.999.999"
+version = "4.15.16"
 description = "Wrapper around https://github.com/kubernetes-client/python"
 optional = false
-python-versions = "^3.8"
-files = []
-develop = false
+python-versions = ">=3.8,<4.0"
+files = [
+    {file = "openshift_python_wrapper-4.15.16.tar.gz", hash = "sha256:12967e110da5c421565ca13e87fd261be6fcc3885e1a04ca698a1536b134aec1"},
+]
 
 [package.dependencies]
-colorlog = "^6.7.0"
-jinja2 = "^3.1.2"
-kubernetes = "^29.0.0"
-packaging = "^23.1"
-python-benedict = "^0.33.0"
-python-simple-logger = "^1.0.6"
-timeout-sampler = "^0.0.1"
-xmltodict = "^0.13.0"
-
-[package.source]
-type = "git"
-url = "https://github.com/RedHatQE/openshift-python-wrapper.git"
-reference = "main"
-resolved_reference = "6f800f87908ace17d79c3f53d9233bfcf2c90eac"
+colorlog = ">=6.7.0,<7.0.0"
+jinja2 = ">=3.1.2,<4.0.0"
+kubernetes = ">=29.0.0,<30.0.0"
+packaging = ">=23.1,<24.0"
+python-benedict = ">=0.33.0,<0.34.0"
+python-simple-logger = ">=1.0.6,<2.0.0"
+xmltodict = ">=0.13.0,<0.14.0"
 
 [[package]]
 name = "openshift-python-wrapper-data-collector"
@@ -758,4 +752,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.8"
-content-hash = "d6ff0a007a52ad8a255a44ae4f0003510a914b4b549a1142fe3ee95fd5603858"
+content-hash = "761bbb3647e9a740d95b8cda75c1c0d06d3f9c542343232af69ae37f019cf054"
