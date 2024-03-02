@@ -2,6 +2,8 @@ from ocp_resources.namespace import Namespace
 from kubernetes.dynamic.exceptions import ResourceNotFoundError
 from pytest_testconfig import config as py_config
 from operator_utilities.operator import get_subscription, get_csv
+
+
 def get_namespace(name):
     namespace = Namespace(name=name)
     if namespace.exists:
