@@ -5,7 +5,7 @@ description = "Utilities to interact with openshift operators"
 authors = ["dbasunag <dbasunag@redhat.com>"]
 license = "Apache License"
 readme = "README.md"
-packages = [{ include = "utilities" }]
+packages = [{ include = "operator_utilities" }]
 
 [tool.poetry.dependencies]
 python = "^3.8"
