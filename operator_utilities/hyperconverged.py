@@ -5,7 +5,7 @@ from simple_logger.logger import get_logger
 from kubernetes.dynamic.exceptions import ResourceNotFoundError
 from ocp_resources.hyperconverged import HyperConverged
 from ocp_resources.resource import Resource
-from opertor_utilities.exceptions import (
+from operator_utilities.exceptions import (
     HyperconvergedNotHealthyCondition,
     HyperconvergedSystemHealthException,
 )
@@ -30,14 +30,10 @@ def get_hyperconverged_resource(hyperconverged_name, namespace_name):
     hco = HyperConverged(name=hyperconverged_name, namespace=namespace_name)
     if hco.exists:
         return hco
-    raise ResourceNotFoundError(
-        f"Hyperconverged resource not found in {namespace_name}"
-    )
+    raise ResourceNotFoundError(f"Hyperconverged resource not found in {namespace_name}")
 
 
-def assert_hyperconverged_health(
-    hyperconverged, hyperconverged_status_conditions=None, system_health_status=None
-):
+def assert_hyperconverged_health(hyperconverged, hyperconverged_status_conditions=None, system_health_status=None):
     """
     Validates hyperconverged CR is in a healthy condition.
     Hyperconverged CR's Available, ReconcileComplete, Upgradeable conditions are True and Progressing and
@@ -75,13 +71,10 @@ def assert_hyperconverged_health(
         raise HyperconvergedNotHealthyCondition(
             "Hyperconverged status condition unhealthy "
             f"expected: {json.dumps(hyperconverged_status_conditions, indent=3)}:"
-            f"actual: {json.dumps(health_mismatch_conditions, indent=3,)}"
+            f"actual: {json.dumps(health_mismatch_conditions, indent=3)}"
         )
 
-    if (
-        system_health_status
-        and hyperconverged_obj_status.systemHealthStatus == system_health_status
-    ):
+    if system_health_status and hyperconverged_obj_status.systemHealthStatus == system_health_status:
         raise HyperconvergedSystemHealthException(
             f"Hyperconverged systemHealthStatus expected: {system_health_status},"
             f" actual: {hyperconverged_obj_status.systemHealthStatus}"

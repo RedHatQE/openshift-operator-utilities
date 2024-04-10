@@ -44,9 +44,7 @@ def get_subscription(subscription_name, namespace):
     )
     if subscription.exists:
         return subscription
-    raise ResourceNotFoundError(
-        f"Subscription {subscription_name} not found in namespace: {namespace}"
-    )
+    raise ResourceNotFoundError(f"Subscription {subscription_name} not found in namespace: {namespace}")
 
 
 def get_cnv_installed_csv(namespace, subscription_name):
@@ -94,6 +92,4 @@ def get_catalog_source(catalogsource_name, catalogsource_namespace):
     if catalog_source.exists:
         return catalog_source
 
-    raise ResourceNotFoundError(
-        f"Subscription {catalogsource_name} not found in namespace: {catalogsource_namespace}"
-    )
+    raise ResourceNotFoundError(f"Subscription {catalogsource_name} not found in namespace: {catalogsource_namespace}")

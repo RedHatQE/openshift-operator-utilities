@@ -6,7 +6,7 @@ from ocp_resources.namespace import Namespace
 from kubernetes.dynamic.exceptions import ResourceNotFoundError, NotFoundError
 
 from ocp_resources.pod import Pod
-from opertor_utilities.constants import TIMEOUT_2MIN, TIMEOUT_5SEC
+from operator_utilities.constants import TIMEOUT_2MIN, TIMEOUT_5SEC
 
 LOGGER = get_logger(name=__name__)
 
@@ -46,11 +46,7 @@ def get_waiting_pod_container_error_status(pod):
     for container_status in pod_instance_status.get("containerStatuses", []):
         waiting_container = container_status.get("state", {}).get("waiting")
         if waiting_container:
-            return (
-                waiting_container["reason"]
-                if waiting_container.get("reason")
-                else waiting_container
-            )
+            return waiting_container["reason"] if waiting_container.get("reason") else waiting_container
 
 
 def get_not_running_pods(pods, filter_pods_by_name=None):
@@ -68,17 +64,13 @@ def get_not_running_pods(pods, filter_pods_by_name=None):
             # We also need to keep track of pods marked for deletion as not running. This would ensure any
             # pod that was spinned up in place of pod marked for deletion, reaches healthy state before end
             # of this check
-            if pod_instance.metadata.get(
-                "deletionTimestamp"
-            ) or pod_instance.status.phase not in (
+            if pod_instance.metadata.get("deletionTimestamp") or pod_instance.status.phase not in (
                 pod.Status.RUNNING,
                 pod.Status.SUCCEEDED,
             ):
                 pods_not_running.append({pod.name: pod.status})
         except (ResourceNotFoundError, NotFoundError):
-            LOGGER.warning(
-                f"Ignoring pod {pod.name} that disappeared during cluster sanity check"
-            )
+            LOGGER.warning(f"Ignoring pod {pod.name} that disappeared during cluster sanity check")
             pods_not_running.append({pod.name: "Deleted"})
     return pods_not_running
 
