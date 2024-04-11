@@ -78,7 +78,7 @@ def assert_hyperconverged_health(
             f"actual: {json.dumps(health_mismatch_conditions, indent=3)}"
         )
 
-    if system_health_status and hyperconverged_obj_status.systemHealthStatus == system_health_status:
+    if system_health_status and hyperconverged_obj_status.systemHealthStatus != system_health_status:
         raise HyperconvergedSystemHealthException(
             f"Hyperconverged systemHealthStatus expected: {system_health_status},"
             f" actual: {hyperconverged_obj_status.systemHealthStatus}"
