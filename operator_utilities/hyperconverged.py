@@ -1,5 +1,5 @@
 import json
-
+from typing import Optional
 from simple_logger.logger import get_logger
 
 from kubernetes.dynamic.exceptions import ResourceNotFoundError
@@ -13,7 +13,7 @@ from operator_utilities.exceptions import (
 LOGGER = get_logger(name=__name__)
 
 
-def get_hyperconverged_resource(hyperconverged_name, namespace_name):
+def get_hyperconverged_resource(hyperconverged_name: HyperConverged, namespace_name: str) -> HyperConverged:
     """
     gets hyperconverged CR by name
 
@@ -33,7 +33,11 @@ def get_hyperconverged_resource(hyperconverged_name, namespace_name):
     raise ResourceNotFoundError(f"Hyperconverged resource not found in {namespace_name}")
 
 
-def assert_hyperconverged_health(hyperconverged, hyperconverged_status_conditions=None, system_health_status=None):
+def assert_hyperconverged_health(
+    hyperconverged: HyperConverged,
+    hyperconverged_status_conditions: Optional[dict] = None,
+    system_health_status: Optional[str] = None,
+) -> None:
     """
     Validates hyperconverged CR is in a healthy condition.
     Hyperconverged CR's Available, ReconcileComplete, Upgradeable conditions are True and Progressing and

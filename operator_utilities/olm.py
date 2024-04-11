@@ -1,10 +1,11 @@
+from kubernetes.dynamic.exceptions import ResourceNotFoundError
+
 from ocp_resources.catalog_source import CatalogSource
 from ocp_resources.cluster_service_version import ClusterServiceVersion
 from ocp_resources.subscription import Subscription
-from kubernetes.dynamic.exceptions import ResourceNotFoundError
 
 
-def get_csv(csv_name, namespace):
+def get_csv(csv_name: str, namespace: str) -> ClusterServiceVersion:
     """
     gets csv by name
 
@@ -24,7 +25,7 @@ def get_csv(csv_name, namespace):
     raise ResourceNotFoundError(f"CSV: {csv_name} not found in namespace: {namespace}")
 
 
-def get_subscription(subscription_name, namespace):
+def get_subscription(subscription_name: str, namespace: str) -> Subscription:
     """
     gets subscription by name
 
@@ -47,7 +48,7 @@ def get_subscription(subscription_name, namespace):
     raise ResourceNotFoundError(f"Subscription {subscription_name} not found in namespace: {namespace}")
 
 
-def get_cnv_installed_csv(namespace, subscription_name):
+def get_cnv_installed_csv(namespace: str, subscription_name: str) -> ClusterServiceVersion:
     """
     gets installed csv associated with openshift-virtualization
 
@@ -71,7 +72,7 @@ def get_cnv_installed_csv(namespace, subscription_name):
     )
 
 
-def get_catalog_source(catalogsource_name, catalogsource_namespace):
+def get_catalog_source(catalogsource_name: str, catalogsource_namespace: str) -> CatalogSource:
     """
     gets catalogsource by name
 

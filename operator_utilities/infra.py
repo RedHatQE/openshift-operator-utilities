@@ -1,3 +1,6 @@
+from typing import Optional, Any
+
+from kubernetes.dynamic import DynamicClient
 from simple_logger.logger import get_logger
 from timeout_sampler import TimeoutSampler, TimeoutExpiredError
 
@@ -11,7 +14,7 @@ from operator_utilities.constants import TIMEOUT_2MIN, TIMEOUT_5SEC
 LOGGER = get_logger(name=__name__)
 
 
-def get_namespace(name):
+def get_namespace(name: str) -> Namespace:
     """
     gets namespace by name
 
@@ -30,7 +33,7 @@ def get_namespace(name):
     raise ResourceNotFoundError(f"Namespace: {name} not found")
 
 
-def get_waiting_pod_container_error_status(pod):
+def get_waiting_pod_container_error_status(pod: Pod) -> Any:
     """
      gets reason associated with a pod that is in waiting state
 
@@ -38,7 +41,7 @@ def get_waiting_pod_container_error_status(pod):
          pod(Pod): Pod object
 
     Returns:
-        str or dict: reason for the pod to be in waiting state
+        str or None: reason for the pod to be in waiting state
     """
     pod_instance_status = pod.instance.status
     # Check the containerStatuses and if any containers is in waiting state, return that information:
@@ -46,10 +49,10 @@ def get_waiting_pod_container_error_status(pod):
     for container_status in pod_instance_status.get("containerStatuses", []):
         waiting_container = container_status.get("state", {}).get("waiting")
         if waiting_container:
-            return waiting_container["reason"] if waiting_container.get("reason") else waiting_container
+            return waiting_container["reason"] if waiting_container.get("reason") else str(waiting_container)
 
 
-def get_not_running_pods(pods, filter_pods_by_name=None):
+def get_not_running_pods(pods: list, filter_pods_by_name: Optional[str] = None) -> list:
     pods_not_running = []
     for pod in pods:
         pod_instance = pod.instance
@@ -76,11 +79,11 @@ def get_not_running_pods(pods, filter_pods_by_name=None):
 
 
 def wait_for_pods_running(
-    admin_client,
-    namespace_name,
-    number_of_consecutive_checks=3,
-    filter_pods_by_name=None,
-):
+    admin_client: DynamicClient,
+    namespace_name: str,
+    number_of_consecutive_checks: int = 3,
+    filter_pods_by_name: Optional[str] = None,
+) -> Any:
     """
     Waits for all pods in a given namespace to reach Running/Completed state. To avoid catching all pods in running
     state too soon, use number_of_consecutive_checks with appropriate values.
