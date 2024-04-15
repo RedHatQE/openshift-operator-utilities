@@ -1,3 +1,12 @@
+[tool.ruff]
+preview = true
+line-length = 120
+fix = true
+output-format = "grouped"
+
+[tool.ruff.format]
+exclude = [".git", ".venv", ".mypy_cache", ".tox", "__pycache__"]
+
 [tool.poetry]
 name = "openshift-operator-utilities"
 version = "0.0.0"
@@ -5,7 +14,13 @@ description = "Utilities to interact with openshift operators"
 authors = ["dbasunag <dbasunag@redhat.com>"]
 license = "Apache License"
 readme = "README.md"
-packages = [{ include = "utilities" }]
+packages = [{ include = "operator_utilities" }]
+homepage = "https://github.com/RedHatQE/openshift-operator-utilities"
+documentation = "https://github.com/RedHatQE/openshift-operator-utilities/blob/main/README.md"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
