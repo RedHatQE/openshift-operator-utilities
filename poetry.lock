@@ -381,12 +381,12 @@ timeout-sampler = ">=0.0.1"
 
 [[package]]
 name = "openshift-python-wrapper"
-version = "10.0.17"
+version = "10.0.33"
 description = "Wrapper around https://github.com/kubernetes-client/python"
 optional = false
-python-versions = ">=3.8,<4.0"
+python-versions = "<4.0,>=3.8"
 files = [
-    {file = "openshift_python_wrapper-10.0.17.tar.gz", hash = "sha256:29c6758d3b057d111d7b771c581f52f0f9aae7448197fe40f18654b1deb05ef3"},
+    {file = "openshift_python_wrapper-10.0.33.tar.gz", hash = "sha256:b865a3d704dcf0966048ddb43da13cd095e8b51f3c2fd2c091f98136ec8c7e24"},
 ]
 
 [package.dependencies]
@@ -396,7 +396,7 @@ kubernetes = ">=29.0.0,<30.0.0"
 packaging = ">=23.1,<24.0"
 python-benedict = ">=0.33.0,<0.34.0"
 python-simple-logger = ">=1.0.6"
-timeout-sampler = ">=0.0.2"
+timeout-sampler = ">=0.0.17"
 xmltodict = ">=0.13.0,<0.14.0"
 
 [[package]]
@@ -727,12 +727,12 @@ files = [
 
 [[package]]
 name = "timeout-sampler"
-version = "0.0.11"
+version = "0.0.22"
 description = "Timeout utility class to wait for any function output and interact with it in given time"
 optional = false
-python-versions = ">=3.8,<4.0"
+python-versions = "<4.0,>=3.8"
 files = [
-    {file = "timeout_sampler-0.0.11.tar.gz", hash = "sha256:129dda9a6eb3f456bf828de22eb9fc931a917b7ca33167829226403fd49ae592"},
+    {file = "timeout_sampler-0.0.22.tar.gz", hash = "sha256:117ffcc93d2689f3ab47537772ac50616f125005160cd85c4b9d54ca48b5281c"},
 ]
 
 [package.dependencies]
