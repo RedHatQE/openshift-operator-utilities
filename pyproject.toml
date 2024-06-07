@@ -24,7 +24,7 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = "^3.8"
-kubernetes = "^29.0.0"
+kubernetes = "^30.0.0"
 openshift-python-utilities = "^5.0.16"
 openshift-python-wrapper = "^10.0.0"
 
